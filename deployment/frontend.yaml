@@ -13,7 +13,8 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: quay.io/hardo314/nginx-frontend:latest
+          image: quay.io/hardo314/nginx-frontend:2
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
