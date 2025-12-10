@@ -1,0 +1,15 @@
+FROM registry.access.redhat.com/ubi9/go-toolset:1.21 AS builder
+USER root
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY main.go ./
+RUN CGO_ENABLED=0 GOOS=linux go build -o guestbook-api .
+
+FROM registry.access.redhat.com/ubi9-minimal:latest
+WORKDIR /app
+COPY --from=builder /app/guestbook-api .
+EXPOSE 8080
+USER 1001
+CMD ["./guestbook-api"]
+

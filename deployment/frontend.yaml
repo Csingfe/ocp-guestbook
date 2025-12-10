@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: quay.io/hardo314/nginx-frontend:2
+          image: ghcr.io/csingfe/guestbook-frontend:latest
           imagePullPolicy: Always
 ---
 apiVersion: v1

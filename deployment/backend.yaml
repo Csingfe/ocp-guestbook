@@ -138,9 +138,12 @@ spec:
       labels:
         app: backend
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: backend
-          image: quay.io/hardo314/golang-backend:latest
+          image: ghcr.io/csingfe/guestbook-backend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
