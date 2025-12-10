@@ -39,7 +39,7 @@ spec:
             - name: POSTGRESQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: DB-PASSWORD
+                  name: db-password
                   key: password
             - name: POSTGRESQL_DATABASE
               valueFrom:
@@ -91,7 +91,7 @@ spec:
           ports:
             - containerPort: 6379
           env:
-            - name: REDIS_PASSWORD
+            - name: redis_password
               valueFrom:
                 secretKeyRef:
                   name: redis-password
