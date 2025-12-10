@@ -148,10 +148,10 @@ spec:
                 configMapKeyRef:
                   name: app-config
                   key: REDIS_PORT
-            - name: REDIS-PASSWORD
+            - name: redis-password
               valueFrom:
                 secretKeyRef:
-                  name: redis_password
+                  name: redis-password
                   key: password
 ---
 apiVersion: v1
