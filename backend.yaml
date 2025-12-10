@@ -39,20 +39,13 @@ spec:
             - name: POSTGRESQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-password
+                  name: DB-PASSWORD
                   key: password
             - name: POSTGRESQL_DATABASE
               valueFrom:
                 configMapKeyRef:
                   name: app-config
-                  key: db-name
-          volumeMounts:
-            - name: postgres-data
-              mountPath: /var/lib/postgresql
-      volumes:
-        - name: postgres-data
-          persistentVolumeClaim:
-            claimName: postgres-pvc
+                  key: DB-NAME
 ---
 apiVersion: v1
 kind: Service
@@ -103,13 +96,6 @@ spec:
                 secretKeyRef:
                   name: redis-password
                   key: password
-          volumeMounts:
-            - name: redis-data
-              mountPath: /var/lib/redis/data
-      volumes:
-        - name: redis-data
-          persistentVolumeClaim:
-            claimName: redis-pvc
 ---
 apiVersion: v1
 kind: Service
@@ -151,17 +137,17 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: app-config
-                  key: db-host
+                  key: DB-HOST
             - name: REDIS_HOST
               valueFrom:
                 configMapKeyRef:
                   name: app-config
-                  key: redis-host
+                  key:  REDIS-HOST
             - name: REDIS_PORT
               valueFrom:
                 configMapKeyRef:
                   name: app-config
-                  key: redis-port
+                  key: REDIS-PORT
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
