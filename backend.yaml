@@ -34,17 +34,17 @@ spec:
             - name: POSTGRESQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: db_password
+                  name: db-password
                   key: username
             - name: postgresql_password
               valueFrom:
                 secretKeyRef:
-                  name: db_password
+                  name: db-password
                   key: password
             - name: POSTGRESQL_DATABASE
               valueFrom:
                 configMapKeyRef:
-                  name: app_config
+                  name: app-config
                   key: DB_NAME
 ---
 apiVersion: v1
@@ -91,10 +91,10 @@ spec:
           ports:
             - containerPort: 6379
           env:
-            - name: redis_password
+            - name: redis-password
               valueFrom:
                 secretKeyRef:
-                  name: redis_password
+                  name: redis-password
                   key: password
 ---
 apiVersion: v1
@@ -141,14 +141,14 @@ spec:
             - name: REDIS_HOST
               valueFrom:
                 configMapKeyRef:
-                  name: app_config
+                  name: app-config
                   key:  REDIS_HOST
             - name: REDIS_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: app_config
+                  name: app-config
                   key: REDIS_PORT
-            - name: REDIS_PASSWORD
+            - name: REDIS-PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: redis_password
